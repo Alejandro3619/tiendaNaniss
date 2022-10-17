@@ -2,18 +2,18 @@ const express=require("express")
 const mysql=require("mysql")
 const myconn=require("express-myconnection")
 const app=express()
-const indexroute=require("./JS/index.js")
+const indexroute=require("./js/index.js")
 
-Let cors=require("cors")
+let cors=require("cors")
 app.use(cors());
 
 //iniciar la conexion a la BaseDatos
 const conexion=mysql.createConnection({
     host: 'localhost',
-    port: 3309,
+    port: 3308,
     user: 'root',
     password: '1234a',
-    database: 'bdapi'
+    database: 'tiendananis'
 });
 
 conexion.connect(function(error){
@@ -24,16 +24,13 @@ conexion.connect(function(error){
     }
 })
 
-
-
 const conexion2={
     host: 'localhost',
-    port: 3309,
+    port: 3308,
     user: 'root',
     password: '1234a',
-    database: 'bdapi'
+    database: 'tiendananis'
 };
-
 
 app.use(myconn(mysql,conexion2,'single'))
 app.use(express.json())

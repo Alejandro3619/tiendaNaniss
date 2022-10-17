@@ -12,16 +12,16 @@ router.get("/",function(req,res){
 
 //Insentar Usuario
 router.post("/insertarUsuario",urlcodeParser,function(req,res){
-    const Nombre=req.body.Nombre
-    const Correo=req.body.Correo
-    const UserName=req.body.UserName
-    const Password=req.body.Password
+    const idProducto=req.body.idProducto
+    const idProveedor=req.body.idProveedor
+    const NombreCliente=req.body.NombreCliente
+    const Documento=req.body.Documento
     const Telefono=req.body.Telefono
 
     req.getConnection((err,conn)=>{
         if(err) return res.send(err)
         const x=""
-        const consulta=x.concat('INSERT INTO usuario (Nombre,Correo,UserName,Password,Telefono) VALUES ("',Nombre,'","',Correo,'","',UserName,'","',Password,'","',Telefono,'")')
+        const consulta=x.concat('INSERT INTO usuario (idProducto,idProveedor,NombreCliente,Documento,Telefono) VALUES ("',idProducto,'","',idProveedor,'","',NombreCliente,'","',Documento,'","',Telefono,'")')
         conn.query(consulta,[req.body],(err,result,rows)=>{
             if(err){
                 res.send(err)
